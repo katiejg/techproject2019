@@ -1,4 +1,4 @@
-require_relative './linearhw'
+require_relative 'config/environment'
 
 class App < Sinatra::Base
 
