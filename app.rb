@@ -96,26 +96,11 @@ post '/' do
     end
   end
 
-  puts "What would you like to do? Please type your answer as the list item number"
-  puts "1. Get a range from a domain"
-  puts "2. Solve for x or y in standard linear form"
-  puts "3. Solve for x or y in slope-intercept form"
-  whatchuwant = gets.chomp.to_i
-  if whatchuwant == 1
-    findrange
-    elsif whatchuwant == 2
-    standardform
-    elsif whatchuwant == 3
-    slopeintercept
-    else
-    puts "Error! Sorry! Be sure to type your answer as the list item number!"
-  end
-
-  if process=="findrange"
+  if params[:process]=="findrange"
 	 findrange
- elsif process=="standardform"
+ elsif params[:process]=="standardform"
 	 standardform
- elsif process=="slopeintercept
+ elsif params[:process]=="slopeintercept
 	 slopeintercept
  end
 end
