@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="functionicon.png"/>
+	<title>Linear Graph HW Calculator</title>
+</head>
+<body>
+	<h1>Linear Graph HW Calculator</h1>
+	<p>This is standard form: ax + by = c</p>
+	<form action="/standardform" method="POST">
+		<p>What is a?</p>
+		<input type="number" name="a" step="any">
+		<p>What is b?</p>
+		<input type="number" name="b" step="any">
+		<p>Do you have x or y?</p>
+		<select name="yorx">
+			<option value="y">Y</option>
+			<option value="x">X</option>
+		</select>
+		<p>What is the value of that y or x?</p>
+		<input type="number" name="yxvalue" step="any">
+		<p>What is c?</p>
+		<input type="number" name="c" step="any">
+		<input type="submit">
+		<p>The value is <%="@third"%></p>
+	</form>
+</body>
+</html>
