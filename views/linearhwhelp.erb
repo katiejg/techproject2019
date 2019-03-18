@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="functionicon.png"/>
+	<title>Linear Graph HW Calculator</title>
+</head>
+<body>
+	<h1>Linear Graph HW Calculator</h1>
+	<p>Want help on graphing homework? I'll help you find coordinates!</p>
+	<form action="/" method="POST">
+		<select name="process">
+		<option value="findrange">Get a range from a domain</option>
+  		<option value="standardform">Solve for x or y in standard linear form</option>
+  		<option value="slopeintercept">Solve for x or y in slope-intercept form</option>
+		</select>
+		<input type="submit">
+	</form>
+<% # insert inputs below in the array %>
+<% def findrange %>
+  <% domain = [] %>
+	<p>Type in your domain numbers one by one. [Type number, hit enter UNTIL you see a prompt to go further!] When you're done with all the domain number, type 'Done!'" </p>
+	<% while gets.chomp != "Done!" do %>
+		<% domain << gets.chomp.to_f %>
+		<p>Next number or 'Done!'</p>
+	<% end %>
+<p><%= "#{domain} Is this correct?" %></p>
+<% if gets.chomp == "no" %>
+  <p>Sorry, please start again!</p>
+  <% elsif gets.chomp == "yes" %>
+  <p>In y = mx + b, what is m, or your slope?</p>
+  <% rate = gets.chomp.to_f %>
+  <p>In y = mx + b, what is b, or your y-intercept?</p>
+  <% yintercept = gets.chomp.to_f %>
+  <% domain.each do |input| %>
+    <% # insert linear equation here in function form %>
+    <% stepone=rate*input %>
+    <% steptwo=stepone+yintercept %>
+    <p><%= "#{steptwo} is the y when x = #{input}" %></p>
+  <% end %>
+<% else %>
+  <p>Sorry, an error! Please type 'no' or 'yes' next time!</p>
+<% end %>
+<% end %>
+
+<% # calculator for standard linear form %>
+<% def standardform %>
+  <p>This is the standard linear form: ax + by = c</p>
+  <p>What is a?</p>
+  <% a = gets.chomp.to_f %>
+  <p>What is b?</p>
+  <% b = gets.chomp.to_f %>
+  <p>Do you have x or y?</p>
+  <% yorx = gets.chomp %>
+  <% if yorx == "y" %>
+    <p>What is y?</p>
+    <% y = gets.chomp.to_f %>
+    <% elsif yorx == "x" %>
+    <p>What is x?</p>
+    <% x = gets.chomp.to_f %>
+  <% else %>
+    <p>Oops. Try again.</p>
+  <% end %>
+    <p>What is c?</p>
+    <% c = gets.chomp.to_f %>
+  <% if yorx == "y" %>
+    <% first = b*y %>
+    <% second = c - first %>
+    <% third = second/a %>
+    <p><%= "x = #{third}" %></p>
+  <% elsif yorx == "x" %>
+    <% first = a*x %>
+    <% second = c - first %>
+    <% third = second/b %>
+    <p><%= "y = #{third}" %></p>
+  <% end %>
+<% end %>
+
+<% # slope-intercept form %>
+<% def slopeintercept %>
+  <p>This is slope-intercept form: y = mx + b</p>
+  <p>What is m?</p>
+  <% m = gets.chomp.to_f %>
+  <p>What is b?</p>
+  <% b = gets.chomp.to_f %>
+  <p>Do you have x or y?</p>
+  <% yorx = gets.chomp %>
+  <% if yorx == "y" %>
+    <p>What is y?</p>
+    <% y = gets.chomp.to_f %>
+    <% elsif yorx == "x" %>
+    <p>What is x?</p>
+    <% x = gets.chomp.to_f %>
+  <% else %>
+    <p>Oops. Try again." </p>
+  <% end %>
+  <% if yorx == "y" %>
+    <% first = y-b %>
+    <% second = first / m %>
+    <p><%= "x = #{second}" %></p>
+  <% elsif yorx == "x" %>
+    <% first = m*x %>
+    <% second = first + b %>
+    <p><%= "y = #{second}" %></p>
+  <% end %>
+<% end %>
+
+<% if process=="findrange" %>
+	<% findrange %>
+	<% elsif process=="standardform" %>
+	<% standardform %>
+	<% elsif process=="slopeintercept %>
+	<% slopeintercept %>
+<% end %>
+
+</body>
+</html>
