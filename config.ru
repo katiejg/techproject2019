@@ -1,3 +1,3 @@
-require './config/linearhw'
+require './linearhw'
 
 run App
